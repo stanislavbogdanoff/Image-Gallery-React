@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ImagePopup from './ImagePopup';
 
 function Gallery({ images }) {
 
@@ -21,7 +22,6 @@ function Gallery({ images }) {
 
         {images.map((image, index) => {
           return (
-
             <div className="image-box" key={index}>
               <img 
                 className='image'
@@ -30,7 +30,6 @@ function Gallery({ images }) {
                 onClick={() => handleClick(index)}
               />
             </div>
-
           )
         })}
 
@@ -38,13 +37,11 @@ function Gallery({ images }) {
 
       {isOpen && (
 
-        <dialog className="dialog" open onClick={() => handleClick(null)}>
-          <img 
-            src={images[selectedImage].url} 
-            alt={images[selectedImage].alt}
-            onClick={() => handleClick()}
-          />
-        </dialog>
+        <ImagePopup 
+          url={images[selectedImage].url} 
+          alt={images[selectedImage].alt}
+          handleClick={handleClick}
+        />
 
       )}
 

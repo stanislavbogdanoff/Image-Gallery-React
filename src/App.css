@@ -7,7 +7,7 @@ html {
   font-size: 100%;
 }
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #fff;
   background-color: rgb(29, 35, 43);
   font-weight: 400;
@@ -32,7 +32,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, 300px);
   grid-template-rows: repeat(2, 200px);
-  grid-gap: 10px;
+  grid-gap: 20px;
 }
 .image-box {
   height: 200px;
@@ -63,11 +63,30 @@ h1 {
   z-index: 10;
   border: none;
   cursor: pointer;
-  background-color: rgba(29, 35, 43, 0.7);
+  background-color: rgba(14, 17, 20, 0.9);
   backdrop-filter: blur(1px);
+  opacity: 0.5;
+  transition: all 0.1s ease-in;
 }
-.dialog img {
+.dialog.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.dialog-img {
   width: 800px;
   height: 550px;
-  border-radius: inherit;
+}
+
+.dialog-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgb(64, 80, 104);
+  transform: translateY(-10px);
+  transition: all 0.1s ease-in;
+}
+.dialog-box.active {
+  transform: translateY(0);
 }
