@@ -6,7 +6,7 @@ import './App.css';
 function App() {
   return (
     <Gallery images={imagesList} />
-  );
+  )
 }
 
 export default App;

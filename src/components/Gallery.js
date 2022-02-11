@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 function Gallery({ images }) {
 
   const [isOpen, setIsOpen] = useState(false)
-  const [selectedImage, setSelectedImage] = useState(null)
+  const [selectedImage, setSelectedImage] = useState()
 
   const handleClick = (index) => {
     setSelectedImage(index)
@@ -12,42 +12,43 @@ function Gallery({ images }) {
 
   return (
 
-    <>
+    
+    <section className="gallery">
+
       <h1>Image Gallery with React</h1>
 
-      <section className="gallery">
+      <div className="gallery-box">
 
         {images.map((image, index) => {
           return (
-            <>
 
-              <div className="image-box" key={index}>
+            <div className="image-box" key={index}>
+              <img 
+                className='image'
+                src={image.url} 
+                alt={image.alt} 
+                onClick={() => handleClick(index)}
+              />
+            </div>
 
-                <img 
-                  className='image'
-                  src={image.url} 
-                  alt={image.alt} 
-                  onClick={() => handleClick(index)}
-                />
-
-              </div>
-
-              {(isOpen && index === selectedImage) && (
-                <dialog className="dialog" open onClick={() => handleClick(null)}>
-                  <img 
-                    src={image.url} 
-                    alt={image.alt}
-                    onClick={() => handleClick(null)}
-                  />
-                </dialog>
-              )}
-
-            </>
           )
         })}
 
-      </section>
-    </>
+      </div>
+
+      {isOpen && (
+
+        <dialog className="dialog" open onClick={() => handleClick(null)}>
+          <img 
+            src={images[selectedImage].url} 
+            alt={images[selectedImage].alt}
+            onClick={() => handleClick()}
+          />
+        </dialog>
+
+      )}
+
+    </section>
 
   )
 }
